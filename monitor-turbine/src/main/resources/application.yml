@@ -1,0 +1,17 @@
+
+#cluster-name-expression为默认的服务名集群
+turbine:
+  aggregator:
+    cluster-config: default
+  app-config: SERVICE-FEIGN,SERVICE-RIBBON
+  cluster-name-expression: new String("default")
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: monitor-turbine
+server:
+  port: 8800
+

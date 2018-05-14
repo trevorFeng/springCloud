@@ -12,6 +12,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * @Author LB
+ * @Description 【@EnableHystrix开启熔断器功能，@EnableHystrixDashboard开启监控熔断器监控状态】
+ * @Param
+ *
+ */
 @SpringBootApplication
 @EnableDiscoveryClient
 @ComponentScan(basePackages = {"com.serviceRibbon.controller" ,"com.serviceRibbon.service"})
@@ -27,17 +33,18 @@ public class ServiceRibbonApplication {
 	/**
 	 * @Author LB
 	 * @Description 【向程序的ioc注入一个bean: restTemplate;
-	 * 				并通过@LoadBalanced注解表明这个restRemplate开启负载均衡的功能。】
+	 * 				并通过@LoadBalanced注解表明这个restRemplate开启负载均衡的功能。负载均衡的核心类为LoadBalancerClient】
 	 * @Param
 	 *
 	 */
 	@Bean
 	@LoadBalanced
 	RestTemplate restTemplate() {
-	    System.out.println("11111111111111111111111111111111111");
 		return new RestTemplate();
 	}
 
+	//http://localhost:8765/hystrix.stream
+	//http://localhost:8765/hystrix
 	@Bean
 	public ServletRegistrationBean getServlet(){
 		HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();

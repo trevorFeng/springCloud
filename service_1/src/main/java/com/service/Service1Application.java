@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @Author LB
+ * @Description 【加上@EnableEurekaClient开启Eureka client功能】
+ * @Param
+ *
+ */
 @SpringBootApplication
 @EnableEurekaClient
 @RestController
